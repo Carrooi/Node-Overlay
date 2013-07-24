@@ -29,6 +29,9 @@ class Overlay
 		if typeof options.scrollable == 'undefined' then options.scrollable = @scrollable
 
 		if @visible == false
+			if options.scrollable == false
+				$('body').css('overflow', 'hidden')
+
 			if @el == null
 				@el = $('<div>',
 					css:
@@ -40,9 +43,6 @@ class Overlay
 						height: $(window).height()
 					click: (e) => @hide()
 				).appendTo($('body'))
-
-			if options.scrollable == false
-				$('body').css('overflow', 'hidden')
 
 			$(window).on('resize.overlay', (e) => @onResize() )
 
