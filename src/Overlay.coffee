@@ -30,24 +30,27 @@ class Overlay
 
 		if @visible == false
 			if @el == null
-				if options.scrollable == false
-					$('body').css('overflow', 'hidden')
-
 				@el = $('<div>',
 					css:
 						display: 'none'
-						backgroundColor: options.color
-						opacity: options.opacity
 						position: 'fixed'
 						left: 0
 						top: 0
 						width: $(window).width()
 						height: $(window).height()
-						zIndex: options.zIndex
 					click: (e) => @hide()
 				).appendTo($('body'))
 
+			if options.scrollable == false
+				$('body').css('overflow', 'hidden')
+
 			$(window).on('resize.overlay', (e) => @onResize() )
+
+			@el.css(
+				backgroundColor: options.color
+				opacity: options.opacity
+				zIndex: options.zIndex
+			)
 
 			@el.fadeIn(options.duration, =>
 				@visible = true
