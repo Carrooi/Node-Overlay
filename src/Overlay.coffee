@@ -18,6 +18,12 @@ class Overlay
 
 	@el: null
 
+	@events:
+		show: []
+		shown: []
+		hide: []
+		hidden: []
+
 
 	@show: (options = {}) ->
 		deferred = Q.defer()
@@ -29,6 +35,8 @@ class Overlay
 		if typeof options.scrollable == 'undefined' then options.scrollable = @scrollable
 
 		if @visible == false
+			@callEvent('show')
+
 			if options.scrollable == false
 				$('body').css('overflow', 'hidden')
 
@@ -55,6 +63,7 @@ class Overlay
 			@el.fadeIn(options.duration, =>
 				@visible = true
 				deferred.resolve(@)
+				@callEvent('shown')
 			)
 		else
 			deferred.reject(new Error 'Overlay is already visible')
@@ -74,9 +83,11 @@ class Overlay
 		deferred = Q.defer()
 
 		if @visible == true
+			@callEvent('hide')
 			@el.fadeOut(@duration,  =>
 				@visible = false
 				deferred.resolve(@)
+				@callEvent('hidden')
 			)
 
 			$(window).off('resize.overlay')
@@ -87,6 +98,13 @@ class Overlay
 			deferred.reject(new Error 'Overlay is not visible')
 
 		return deferred.promise
+
+
+	@on: (event, fn) -> @events[event].push(fn)
+
+
+	@callEvent: (name) ->
+		event.call(@) for event in @events[name]
 
 
 module.exports = Overlay

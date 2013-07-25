@@ -34,3 +34,18 @@ var options = {
 
 Overlay.show(options);
 ```
+
+## Events
+
+Overlay has got these events:
+
+* show: fired after show method is called
+* shown: fired after show animation finished
+* hide: fired after hide method is called
+* hidden: fired after hide animation finished
+
+```
+Overlay.on('shown', function() {
+	alert('Congratulation');
+});
+```
