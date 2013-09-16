@@ -52,7 +52,10 @@ Overlay.on('shown', function() {
 
 ## Changelog
 
-* 1.2.1
+* 1.2.3
+	+ Added tests
+
+* 1.2.1 - 1.2.2
 	+ Bug fix
 
 * 1.2.0

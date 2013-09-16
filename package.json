@@ -1,7 +1,7 @@
 {
 	"name": "overlay",
 	"description": "Really stupidly simple overlay for browser.",
-	"version": "1.2.2",
+	"version": "1.2.3",
 	"author": {
 		"name": "David Kudera",
 		"email": "sakren@gmail.com"
@@ -19,5 +19,12 @@
 	"license": "MIT",
 	"dependencies": {
 		"q": "0.9.6"
+	},
+	"devDependencies": {
+		"mocha": "latest",
+		"chai": "latest"
+	},
+	"scripts": {
+		"test": "cd ./tests; mocha-phantomjs index.html;"
 	}
 }

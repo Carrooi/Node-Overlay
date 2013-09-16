@@ -5,6 +5,9 @@ EventEmitter = require('events').EventEmitter
 class Overlay extends EventEmitter
 
 
+	@ID: '__dk-overlay'
+
+
 	visible: false
 
 	color: 'black'
@@ -36,7 +39,11 @@ class Overlay extends EventEmitter
 				$('body').css('overflow', 'hidden')
 
 			if @el == null
+				if $('#' + Overlay.ID).length > 0
+					return Q.reject(new Error 'There is already some element with id ' + Overlay.ID + '.')
+
 				@el = $('<div>',
+					id: Overlay.ID
 					css:
 						display: 'none'
 						position: 'fixed'
@@ -61,7 +68,7 @@ class Overlay extends EventEmitter
 				deferred.resolve(@)
 			)
 		else
-			deferred.reject(new Error 'Overlay is already visible')
+			return Q.reject(new Error 'Overlay is already visible')
 
 		return deferred.promise
 
@@ -79,7 +86,7 @@ class Overlay extends EventEmitter
 
 		if @visible == true
 			@emit 'hide', @
-			@el.fadeOut(@duration,  =>
+			@el.fadeOut(@duration, =>
 				@visible = false
 				@emit 'hidden', @
 				deferred.resolve(@)
