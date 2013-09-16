@@ -52,6 +52,9 @@ Overlay.on('shown', function() {
 
 ## Changelog
 
+* 1.2.4
+	+ Removed forgotten debug code
+
 * 1.2.3
 	+ Added tests
 
