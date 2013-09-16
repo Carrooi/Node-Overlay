@@ -1,7 +1,7 @@
 # Overlay
 
 Really stupidly simple overlay for browser.
-Depends on jQuery.
+Depends on jQuery, uses [q](library), instance of [EventEmitter](http://nodejs.org/api/events.html).
 
 ## Usage
 
@@ -49,3 +49,10 @@ Overlay.on('shown', function() {
 	alert('Congratulation');
 });
 ```
+
+## Changelog
+
+* 1.2.0
+	+ Instance of EventEmitter
+	+ Events moved into EventEmitter
+	+ Improvements in doc
