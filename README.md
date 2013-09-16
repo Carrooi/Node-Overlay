@@ -52,6 +52,9 @@ Overlay.on('shown', function() {
 
 ## Changelog
 
+* 1.2.1
+	+ Bug fix
+
 * 1.2.0
 	+ Instance of EventEmitter
 	+ Events moved into EventEmitter

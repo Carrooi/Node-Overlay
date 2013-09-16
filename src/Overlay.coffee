@@ -5,22 +5,22 @@ EventEmitter = require('events').EventEmitter
 class Overlay extends EventEmitter
 
 
-	@visible: false
+	visible: false
 
-	@color: 'black'
+	color: 'black'
 
-	@opacity: 0.8
+	opacity: 0.8
 
-	@zIndex: 1000
+	zIndex: 1000
 
-	@duration: 'fast'
+	duration: 'fast'
 
-	@scrollable: false
+	scrollable: false
 
-	@el: null
+	el: null
 
 
-	@show: (options = {}) ->
+	show: (options = {}) ->
 		deferred = Q.defer()
 
 		if typeof options.color == 'undefined' then options.color = @color
@@ -66,7 +66,7 @@ class Overlay extends EventEmitter
 		return deferred.promise
 
 
-	@onResize: ->
+	onResize: ->
 		if @visible == true
 			@el.css(
 				width: $(window).width()
@@ -74,7 +74,7 @@ class Overlay extends EventEmitter
 			)
 
 
-	@hide: ->
+	hide: ->
 		deferred = Q.defer()
 
 		if @visible == true
@@ -95,4 +95,4 @@ class Overlay extends EventEmitter
 		return deferred.promise
 
 
-module.exports = Overlay
+module.exports = new Overlay
