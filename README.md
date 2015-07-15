@@ -3,6 +3,12 @@
 Really stupidly simple overlay for browser.
 Depends on jQuery, uses [q](library), instance of [EventEmitter](http://nodejs.org/api/events.html).
 
+## Abandoned
+
+Unfortunately I don't have any more time to maintain this repository :-(
+
+![sad cat](https://raw.githubusercontent.com/sakren/sakren.github.io/master/images/sad-kitten.jpg)
+
 ## Usage
 
 ```
@@ -51,6 +57,10 @@ Overlay.on('shown', function() {
 ```
 
 ## Changelog
+
+* 1.2.5
+	+ Move under Carrooi organization
+	+ Abandon package
 
 * 1.2.4
 	+ Removed forgotten debug code
